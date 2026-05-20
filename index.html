@@ -158,16 +158,6 @@
             color: white;
         }
 
-        .dropdown-btn .arrow {
-            display: inline-block;
-            transition: transform 0.2s;
-            font-size: 0.7rem;
-        }
-
-        .dropdown-btn.active .arrow {
-            transform: rotate(180deg);
-        }
-
         .dropdown-content {
             max-height: 0;
             overflow: hidden;
@@ -428,32 +418,35 @@
     </footer>
 
     <script>
-        // Dropdown Accordion Toggle Logic
-        function toggleDropdown(button) {
-            button.classList.toggle('active');
-            const content = button.previousElementSibling;
+        // Cleaned targeted Dropdown Accordion Toggle Logic
+        function toggleDropdown(clickedButton) {
+            // Find the targeted box parent container
+            const detailsContainer = clickedButton.parentElement;
+            const currentContent = detailsContainer.querySelector('.dropdown-content');
+            const currentArrow = clickedButton.querySelector('.arrow');
             
-            if (content.style.maxHeight && content.style.maxHeight !== "0px") {
-                content.style.maxHeight = "0px";
+            // Step 1: Find all other dropdown objects on the page to shut them down
+            document.querySelectorAll('.dropdown-content').forEach(content => {
+                if (content !== currentContent) {
+                    content.style.maxHeight = "0px";
+                }
+            });
+            
+            document.querySelectorAll('.dropdown-btn').forEach(btn => {
+                if (btn !== clickedButton) {
+                    btn.querySelector('.arrow').innerText = "▼";
+                }
+            });
+
+            // Step 2: Toggle the precise clicked item layout
+            if (currentContent.style.maxHeight && currentContent.style.maxHeight !== "0px") {
+                currentContent.style.maxHeight = "0px";
+                currentArrow.innerText = "▼";
             } else {
-                content.style.maxHeight = content.scrollHeight + "px";
+                currentContent.style.maxHeight = currentContent.scrollHeight + "px";
+                currentArrow.innerText = "▲";
             }
         }
-
-        // Card-Free Dynamic Google Review Updater
-        window.addEventListener('DOMContentLoaded', () => {
-            // Using a public, open-source CORS map data mirror link to read the public profile counts safely
-            const storeUrlId = 'ChIJ_6PhW4zRDogR-I6rMWeX_sc'; 
-            
-            fetch(`https://nominatim.openstreetmap.org/lookup?osm_ids=W1084242637&format=json`) // Backup data hook lookup
-                .then(res => {
-                    // Simulating live data update framework safely without account keys
-                    // Note: If you ever use a completely free widget option like Trustindex (No card needed), 
-                    // they will provide an embed snippet to completely replace this script section.
-                    console.log("Checking live sync framework...");
-                })
-                .catch(err => console.log("Using baseline store metric fallback."));
-        });
     </script>
 
 </body>
