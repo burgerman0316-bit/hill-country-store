@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hill's Country Store - Elburn, IL</title>
+    <style>
+        /* Global Styles & Variables */
+        :root {
+            --primary-purple: #4A2E80;
+            --secondary-purple: #633AA3;
+            --accent-yellow: #FFD54F;
+            --text-dark: #333333;
+            --bg-light: #FAFAFA;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header & Hero Section */
+        header {
+            background-color: var(--primary-purple);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-yellow);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .store-title {
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .store-tagline {
+            font-size: 1.2rem;
+            color: #E2D9F3;
+            margin-bottom: 15px;
+        }
+
+        .rating-badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+        }
+
+        .stars {
+            color: var(--accent-yellow);
+        }
+
+        /* Main Layout Container */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        /* Left Column: Info & Offerings */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--secondary-purple);
+        }
+
+        h2 {
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #F0E6FF;
+            padding-bottom: 8px;
+        }
+
+        /* Store Offerings Grid */
+        .offerings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .offering-item {
+            background: #F9F6FF;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #E8DCFF;
+            transition: transform 0.2s;
+        }
+
+        .offering-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .offering-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .offering-item h3 {
+            font-size: 1.1rem;
+            color: var(--primary-purple);
+            margin-bottom: 5px;
+        }
+
+        .offering-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Right Column: Contact & Location Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .info-block {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .icon {
+            font-size: 1.4rem;
+            margin-right: 15px;
+            margin-top: 3px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .info-text h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #777;
+            margin-bottom: 2px;
+        }
+
+        .info-text p, .info-text a {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .info-text a:hover {
+            color: var(--secondary-purple);
+            text-decoration: underline;
+        }
+
+        /* Action Buttons */
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: background 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-purple);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-purple);
+        }
+
+        .btn-secondary {
+            background-color: #EFEFEF;
+            color: var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: #E2E2E2;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #999;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--secondary-purple);
+        }
+
+        /* Responsive Layout Breakpoint */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .store-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="store-title">Hill's Country Store</h1>
+        <p class="store-tagline">Your Friendly Neighborhood Convenience Store in Elburn</p>
+        <div class="rating-badge">
+            <span class="stars">★★★★★</span> <strong>5.0</strong> (22 Google Reviews)
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <main class="main-content">
+            <section class="card">
+                <h2>Welcome to Hill's</h2>
+                <p>Proudly serving the Elburn community, Hill's Country Store is your classic, reliable neighborhood stop. Stop on by for friendly conversation, quick snacks, everyday essentials, and specialty local items. Look out for our signature vibrant purple storefront on Harter Road!</p>
+            </section>
+
+            <section class="card">
+                <h2>What We Offer</h2>
+                <div class="offerings-grid">
+                    <div class="offering-item">
+                        <span class="offering-icon">🥤</span>
+                        <h3>Cold Drinks</h3>
+                        <p>Ice-cold soda, water, energy drinks, and juices.</p>
+                    </div>
+                    <div class="offering-item">
+                        <span class="offering-icon">🌯</span>
+                        <h3>Fresh Breakfast</h3>
+                        <p>Homemade breakfast burritos made fresh to start your day.</p>
+                    </div>
+                    <div class="offering-item">
+                        <span class="offering-icon">🪱</span>
+                        <h3>Live Bait</h3>
+                        <p>Fully stocked with live bait for your local fishing trips.</p>
+                    </div>
+                    <div class="offering-item">
+                        <span class="offering-icon">🛒</span>
+                        <h3>Daily Essentials</h3>
+                        <p>Snacks, ice, household staples, and convenience items.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <div class="info-block">
+                <h2>Store Details</h2>
+                
+                <div class="info-item">
+                    <span class="icon">📍</span>
+                    <div class="info-text">
+                        <h4>Address</h4>
+                        <p>2S133 Harter Rd,<br>Elburn, IL 60119</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="icon">🕒</span>
+                    <div class="info-text">
+                        <h4>Hours</h4>
+                        <p>Open Daily<br><strong>Closes at 7:00 PM</strong></p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="icon">📞</span>
+                    <div class="info-text">
+                        <h4>Phone</h4>
+                        <p><a href="tel:6305572228">(630) 557-2228</a></p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="icon">🌐</span>
+                    <div class="info-text">
+                        <h4>Plus Code</h4>
+                        <p style="font-family: monospace; color: #555;">RFMH+XC Elburn, Illinois</p>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <a href="https://maps.google.com/?q=2S133+Harter+Rd,+Elburn,+IL+60119" target="_blank" class="btn btn-primary">Get Directions</a>
+                    <a href="tel:6305572228" class="btn btn-secondary">Call Store</a>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Hill's Country Store. All rights reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 5px; color: #555;">Locally owned and operated convenience store.</p>
+    </footer>
+
+</body>
+</html>
