@@ -28,7 +28,7 @@
             line-height: 1.6;
         }
 
-        /* Header & Hero Section */
+        /* Header Section */
         header {
             background-color: var(--primary-purple);
             color: white;
@@ -73,7 +73,7 @@
             gap: 30px;
         }
 
-        /* Left Column: Info & Offerings */
+        /* Main Content Column */
         .main-content {
             display: flex;
             flex-direction: column;
@@ -96,44 +96,96 @@
             padding-bottom: 8px;
         }
 
-        /* Store Offerings Grid */
+        /* What We Offer Grid */
         .offerings-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
 
         .offering-item {
-            background: #F9F6FF;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
+            background: #FFFFFF;
             border: 1px solid #E8DCFF;
-            transition: transform 0.2s;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
         }
 
-        .offering-item:hover {
-            transform: translateY(-3px);
+        .offering-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
         }
 
-        .offering-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            display: block;
+        .offering-details {
+            padding: 15px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .offering-item h3 {
-            font-size: 1.1rem;
+        .offering-details h3 {
+            font-size: 1.15rem;
             color: var(--primary-purple);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        .offering-item p {
+        /* Interactive Dropdown Styles */
+        .dropdown-btn {
+            background-color: #F0E6FF;
+            color: var(--primary-purple);
+            border: none;
+            padding: 8px 12px;
+            width: 100%;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .dropdown-btn:hover {
+            background-color: var(--primary-purple);
+            color: white;
+        }
+
+        .dropdown-btn .arrow {
+            display: inline-block;
+            transition: transform 0.2s;
+            font-size: 0.7rem;
+        }
+
+        .dropdown-btn.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #FDFBFF;
+            text-align: left;
+            border-radius: 4px;
+        }
+
+        .dropdown-content p {
+            padding: 12px;
             font-size: 0.9rem;
-            color: #666;
+            color: #555;
+            line-height: 1.4;
+            border-top: 1px dashed #E8DCFF;
         }
 
-        /* Right Column: Contact & Location Sidebar */
+        /* Sidebar Column */
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -157,16 +209,8 @@
             margin-bottom: 0;
         }
 
-        .icon {
-            font-size: 1.4rem;
-            margin-right: 15px;
-            margin-top: 3px;
-            width: 25px;
-            text-align: center;
-        }
-
         .info-text h4 {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: #777;
@@ -189,7 +233,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .btn {
@@ -234,7 +278,7 @@
             border-top: 3px solid var(--secondary-purple);
         }
 
-        /* Responsive Layout Breakpoint */
+        /* Responsive Breakpoint */
         @media (max-width: 768px) {
             .container {
                 grid-template-columns: 1fr;
@@ -266,26 +310,51 @@
             <section class="card">
                 <h2>What We Offer</h2>
                 <div class="offerings-grid">
+                    
                     <div class="offering-item">
-                        <span class="offering-icon">🥤</span>
-                        <h3>Cold Drinks</h3>
-                        <p>Ice-cold soda, water, energy drinks, and juices.</p>
+                        <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&q=80" alt="Cold sodas and drinks" class="offering-img">
+                        <div class="offering-details">
+                            <h3>Cold Drinks</h3>
+                            <div class="dropdown-content">
+                                <p>We stock a massive selection of ice-cold sodas, energy drinks, premium sports drinks, bottled waters, and local juices kept chilled to perfection.</p>
+                            </div>
+                            <button class="dropdown-btn" onclick="toggleDropdown(this)">More Info <span class="arrow">▼</span></button>
+                        </div>
                     </div>
+
                     <div class="offering-item">
-                        <span class="offering-icon">🌯</span>
-                        <h3>Fresh Breakfast</h3>
-                        <p>Homemade breakfast burritos made fresh to start your day.</p>
+                        <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=500&q=80" alt="Breakfast burrito" class="offering-img">
+                        <div class="offering-details">
+                            <h3>Fresh Breakfast</h3>
+                            <div class="dropdown-content">
+                                <p>Try our locally famous, hot homemade breakfast burritos and fresh morning pastries. The ultimate grab-and-go start to your day!</p>
+                            </div>
+                            <button class="dropdown-btn" onclick="toggleDropdown(this)">More Info <span class="arrow">▼</span></button>
+                        </div>
                     </div>
+
                     <div class="offering-item">
-                        <span class="offering-icon">🪱</span>
-                        <h3>Live Bait</h3>
-                        <p>Fully stocked with live bait for your local fishing trips.</p>
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&q=80" alt="Fishing gear and lake bait" class="offering-img">
+                        <div class="offering-details">
+                            <h3>Live Bait</h3>
+                            <div class="dropdown-content">
+                                <p>Heading out to the water? Yes, we really do stock seasonal live bait! Check the yellow window sign or ask our staff at the main counter for today's current stock.</p>
+                            </div>
+                            <button class="dropdown-btn" onclick="toggleDropdown(this)">More Info <span class="arrow">▼</span></button>
+                        </div>
                     </div>
+
                     <div class="offering-item">
-                        <span class="offering-icon">🛒</span>
-                        <h3>Daily Essentials</h3>
-                        <p>Snacks, ice, household staples, and convenience items.</p>
+                        <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=500&q=80" alt="Store snack shelves" class="offering-img">
+                        <div class="offering-details">
+                            <h3>Convenience Items</h3>
+                            <div class="dropdown-content">
+                                <p>From chips, candy bars, and bags of ice to essential household products, automotive fluids, and travel toiletries—we have your quick needs covered.</p>
+                            </div>
+                            <button class="dropdown-btn" onclick="toggleDropdown(this)">More Info <span class="arrow">▼</span></button>
+                        </div>
                     </div>
+
                 </div>
             </section>
         </main>
@@ -295,7 +364,6 @@
                 <h2>Store Details</h2>
                 
                 <div class="info-item">
-                    <span class="icon">📍</span>
                     <div class="info-text">
                         <h4>Address</h4>
                         <p>2S133 Harter Rd,<br>Elburn, IL 60119</p>
@@ -303,7 +371,6 @@
                 </div>
 
                 <div class="info-item">
-                    <span class="icon">🕒</span>
                     <div class="info-text">
                         <h4>Hours</h4>
                         <p>Open Daily<br><strong>Closes at 7:00 PM</strong></p>
@@ -311,7 +378,6 @@
                 </div>
 
                 <div class="info-item">
-                    <span class="icon">📞</span>
                     <div class="info-text">
                         <h4>Phone</h4>
                         <p><a href="tel:6305572228">(630) 557-2228</a></p>
@@ -319,7 +385,6 @@
                 </div>
 
                 <div class="info-item">
-                    <span class="icon">🌐</span>
                     <div class="info-text">
                         <h4>Plus Code</h4>
                         <p style="font-family: monospace; color: #555;">RFMH+XC Elburn, Illinois</p>
@@ -336,9 +401,26 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Hill's Country Store. All rights reserved.</p>
-        <p style="font-size: 0.8rem; margin-top: 5px; color: #555;">Locally owned and operated convenience store.</p>
+        <p>© 2026 Hill's Country Store. All rights reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 5px; color: #555;">Locally owned neighborhood staple.</p>
     </footer>
+
+    <script>
+        function toggleDropdown(button) {
+            // Toggle active state for the clicked button (turns the arrow)
+            button.classList.toggle('active');
+            
+            // Find the dropdown content right above the button
+            const content = button.previousElementSibling;
+            
+            if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+                content.style.maxHeight = "0px";
+            } else {
+                // Dynamically sets max-height to the exact size of internal content for smooth animation
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+    </script>
 
 </body>
 </html>
