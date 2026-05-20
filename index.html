@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hill's Country Store - Kaneville, IL</title>
+    <link rel="icon" type="image/png" href="image_2c2b9f.png">
     <style>
         /* Global Styles & Variables */
         :root {
@@ -35,7 +36,7 @@
         header {
             background-color: var(--primary-purple);
             color: white;
-            padding: 40px 20px;
+            padding: 30px 20px;
             text-align: center;
             border-bottom: 5px solid var(--accent-yellow);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -43,16 +44,26 @@
             margin: 0;
         }
 
-        .store-title {
-            font-size: 2.8rem;
-            margin-bottom: 5px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+        /* Logo Styling for the Header Container */
+        .logo-container {
+            display: block;
+            margin: 0 auto 10px auto;
+            max-width: 280px;
+            width: 100%;
+        }
+
+        .store-logo {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .store-tagline {
             font-size: 1.2rem;
             color: #E2D9F3;
+            margin-top: 15px;
             margin-bottom: 15px;
         }
 
@@ -305,8 +316,8 @@
             .container {
                 grid-template-columns: 1fr;
             }
-            .store-title {
-                font-size: 2.2rem;
+            .logo-container {
+                max-width: 220px;
             }
         }
     </style>
@@ -314,7 +325,9 @@
 <body>
 
     <header>
-        <h1 class="store-title">Hill's Country Store</h1>
+        <div class="logo-container">
+            <img src="image_2c2b9f.png" alt="Hill's Country Store Logo" class="store-logo">
+        </div>
         <p class="store-tagline">Your Friendly Neighborhood Convenience Store in Kaneville</p>
         <div class="rating-badge">
             <span class="stars">★★★★★</span> <strong id="live-rating">5.0</strong> (<span id="live-count">22</span> Google Reviews)
