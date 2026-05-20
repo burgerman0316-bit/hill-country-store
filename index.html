@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hill's Country Store - Elburn, IL</title>
+    <title>Hill's Country Store - Kaneville, IL</title>
     <style>
         /* Global Styles & Variables */
         :root {
@@ -15,20 +15,23 @@
             --card-bg: #FFFFFF;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
+        /* Fixed Mobile Margin / Padding - Removes the top white bar */
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100%;
+            overflow-x: hidden;
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Header Section */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Header Section - Seamless Edge Integration */
         header {
             background-color: var(--primary-purple);
             color: white;
@@ -36,6 +39,8 @@
             text-align: center;
             border-bottom: 5px solid var(--accent-yellow);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            margin: 0;
         }
 
         .store-title {
@@ -283,7 +288,7 @@
 
     <header>
         <h1 class="store-title">Hill's Country Store</h1>
-        <p class="store-tagline">Your Friendly Neighborhood Convenience Store in Elburn</p>
+        <p class="store-tagline">Your Friendly Neighborhood Convenience Store in Kaneville</p>
         <div class="rating-badge">
             <span class="stars">★★★★★</span> <strong id="live-rating">5.0</strong> (<span id="live-count">22</span> Google Reviews)
         </div>
@@ -294,7 +299,7 @@
         <main class="main-content">
             <section class="card">
                 <h2>Welcome to Hill's</h2>
-                <p>Proudly serving the Elburn community, Hill's Country Store is your classic, reliable neighborhood stop. Stop on by for friendly conversation, quick snacks, everyday essentials, and specialty local items. Look out for our signature vibrant purple storefront on Harter Road!</p>
+                <p>Proudly serving the Kaneville community, Hill's Country Store is your classic, reliable neighborhood stop. Stop on by for friendly conversation, quick snacks, everyday essentials, and specialty local items. Look out for our signature vibrant purple storefront on Harter Road!</p>
             </section>
 
             <section class="card">
@@ -378,7 +383,7 @@
                 <div class="info-item">
                     <div class="info-text">
                         <h4>Address</h4>
-                        <p>2S133 Harter Rd,<br>Elburn, IL 60119</p>
+                        <p>2S133 Harter Rd,<br>Kaneville, IL 60144</p>
                     </div>
                 </div>
 
@@ -399,12 +404,12 @@
                 <div class="info-item">
                     <div class="info-text">
                         <h4>Plus Code</h4>
-                        <p style="font-family: monospace; color: #555;">RFMH+XC Elburn, Illinois</p>
+                        <p style="font-family: monospace; color: #555;">RFMH+XC Kaneville, Illinois</p>
                     </div>
                 </div>
 
                 <div class="btn-group">
-                    <a href="https://maps.google.com/?q=Hill's+Country+Store+Elburn" target="_blank" class="btn btn-primary">Get Directions</a>
+                    <a href="https://maps.google.com/?q=2S133+Harter+Rd,+Kaneville,+IL+60144" target="_blank" class="btn btn-primary">Get Directions</a>
                     <a href="tel:6305572228" class="btn btn-secondary">Call Store</a>
                 </div>
             </div>
@@ -418,14 +423,13 @@
     </footer>
 
     <script>
-        // Cleaned targeted Dropdown Accordion Toggle Logic
+        // Unique Dropdown Accordion Logic
         function toggleDropdown(clickedButton) {
-            // Find the targeted box parent container
             const detailsContainer = clickedButton.parentElement;
             const currentContent = detailsContainer.querySelector('.dropdown-content');
             const currentArrow = clickedButton.querySelector('.arrow');
             
-            // Step 1: Find all other dropdown objects on the page to shut them down
+            // Shut down all other open menus safely
             document.querySelectorAll('.dropdown-content').forEach(content => {
                 if (content !== currentContent) {
                     content.style.maxHeight = "0px";
@@ -438,7 +442,7 @@
                 }
             });
 
-            // Step 2: Toggle the precise clicked item layout
+            // Toggle active section details
             if (currentContent.style.maxHeight && currentContent.style.maxHeight !== "0px") {
                 currentContent.style.maxHeight = "0px";
                 currentArrow.innerText = "▼";
